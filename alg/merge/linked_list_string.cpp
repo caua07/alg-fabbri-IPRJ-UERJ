@@ -29,19 +29,19 @@ struct No2 {
 
 typedef No2 *Lista2;
 
-void 
+void
 playground_lista()
 {
   std::cout << "teste" << std::endl;
   Lista l;
 
   // cria um novo no
-  
+
   l = (No *) malloc(sizeof(No));
 
   // no caso da implementacao estatica
   l->name[0] = '\0';
-  
+
   // ou no caso do char * :
   //l->name = "";
   //l->name = 0;
@@ -51,13 +51,13 @@ playground_lista()
   std::cout << "teste" << std::endl;
   // ou
   printf("%s", l->name); // assume que nome contem '\0'
-  
+
   strncpy(l->name, "joao", MAX_NUMERO_DE_CARACTERES);
-  
+
   printf("%s", l->name); // assume que nome contem '\0'
 }
 
-void 
+void
 playground_lista2()
 {
   // Exercicio1: prencher com lista 2
@@ -65,12 +65,12 @@ playground_lista2()
   Lista l;
 
   // cria um novo no
-  
+
   l = (No *) malloc(sizeof(No));
 
   // no caso da implementacao estatica
   l->name[0] = '\0';
-  
+
   // ou no caso do char * :
   //l->name = "";
   //l->name = 0;
@@ -80,8 +80,8 @@ playground_lista2()
   std::cout << "teste" << std::endl;
   // ou
   printf("%s", l->name); // assume que nome contem '\0'
-  
+
   strncpy(l->name, "joao", MAX_NUMERO_DE_CARACTERES);
-  
+
   printf("%s", l->name); // assume que nome contem '\0'
 }
