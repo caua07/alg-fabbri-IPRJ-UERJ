@@ -1,6 +1,6 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1756749432044,
-  "repoUrl": "https://github.com/rfabbri/alg-fabbri-IPRJ-UERJ",
+  "lastUpdate": 1757279820671,
+  "repoUrl": "https://github.com/caua07/alg-fabbri-IPRJ-UERJ",
   "entries": {
     "C++ Benchmark Results": [
       {
@@ -450,6 +450,96 @@ window.BENCHMARK_DATA = {
             "value": 18.956493190010576,
             "unit": "ns/iter",
             "extra": "iterations: 36455856\ncpu: 18.955180643680432 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rfabbri@gmail.com",
+            "name": "Ricardo Fabbri",
+            "username": "rfabbri"
+          },
+          "committer": {
+            "email": "rfabbri@gmail.com",
+            "name": "Ricardo Fabbri",
+            "username": "rfabbri"
+          },
+          "distinct": true,
+          "id": "3b82397629302e4880508d2d33f49a069c30b14e",
+          "message": " reverting ctest link to old school",
+          "timestamp": "2025-09-01T14:55:12-03:00",
+          "tree_id": "201d1fcab3e24d42eb86f7d5afba88cda5e9bf66",
+          "url": "https://github.com/caua07/alg-fabbri-IPRJ-UERJ/commit/3b82397629302e4880508d2d33f49a069c30b14e"
+        },
+        "date": 1757279819851,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "sorted_merge_3way_fixture/BM_sorted_merge_3way/0",
+            "value": 19.204379959029243,
+            "unit": "ns/iter",
+            "extra": "iterations: 36847057\ncpu: 19.20133762650298 ns\nthreads: 1"
+          },
+          {
+            "name": "sorted_merge_3way_fixture/BM_sorted_merge_3way/1",
+            "value": 18.9760978328526,
+            "unit": "ns/iter",
+            "extra": "iterations: 36871050\ncpu: 18.975006597316867 ns\nthreads: 1"
+          },
+          {
+            "name": "sorted_merge_3way_fixture/BM_sorted_merge_3way/2",
+            "value": 18.961075372259874,
+            "unit": "ns/iter",
+            "extra": "iterations: 36912055\ncpu: 18.960536930279286 ns\nthreads: 1"
+          },
+          {
+            "name": "sorted_merge_3way_fixture/BM_sorted_merge_3way/10",
+            "value": 18.957664590962477,
+            "unit": "ns/iter",
+            "extra": "iterations: 36918552\ncpu: 18.95719561265567 ns\nthreads: 1"
+          },
+          {
+            "name": "sorted_merge_3way_fixture/BM_sorted_merge_3way/50",
+            "value": 18.963002437422496,
+            "unit": "ns/iter",
+            "extra": "iterations: 36919324\ncpu: 18.962209167210112 ns\nthreads: 1"
+          },
+          {
+            "name": "sorted_merge_3way_fixture/BM_sorted_merge_3way/100",
+            "value": 18.971469073963636,
+            "unit": "ns/iter",
+            "extra": "iterations: 36935254\ncpu: 18.96961664322113 ns\nthreads: 1"
+          },
+          {
+            "name": "sorted_merge_3way_fixture/BM_sorted_merge_3way/500",
+            "value": 18.960563802819305,
+            "unit": "ns/iter",
+            "extra": "iterations: 36926456\ncpu: 18.958972748427296 ns\nthreads: 1"
+          },
+          {
+            "name": "sorted_merge_3way_fixture/BM_sorted_merge_3way/1000",
+            "value": 19.222360752579856,
+            "unit": "ns/iter",
+            "extra": "iterations: 36902461\ncpu: 19.220575343200014 ns\nthreads: 1"
+          },
+          {
+            "name": "sorted_merge_3way_fixture/BM_sorted_merge_3way/10000",
+            "value": 18.96470428896568,
+            "unit": "ns/iter",
+            "extra": "iterations: 36518573\ncpu: 18.962156434754455 ns\nthreads: 1"
+          },
+          {
+            "name": "sorted_merge_3way_fixture/BM_sorted_merge_3way/100000",
+            "value": 18.966239852375676,
+            "unit": "ns/iter",
+            "extra": "iterations: 36938079\ncpu: 18.964593502547874 ns\nthreads: 1"
+          },
+          {
+            "name": "sorted_merge_3way_fixture/BM_sorted_merge_3way/1000000",
+            "value": 18.96304501097904,
+            "unit": "ns/iter",
+            "extra": "iterations: 36916504\ncpu: 18.9625343992486 ns\nthreads: 1"
           }
         ]
       }
