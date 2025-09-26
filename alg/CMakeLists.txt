@@ -1,3 +1,5 @@
 add_subdirectory(merge)
 add_subdirectory(exercise)
-#add_subdirectory(list)
+add_subdirectory(sort)
+add_subdirectory(list)
+# add_subdirectory(graph)
