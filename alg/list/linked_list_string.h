@@ -1,7 +1,7 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
 #include <cstring>
-#include <iostream> 
+#include <iostream>
 #include <cstdlib>
 
 struct Node {
@@ -14,14 +14,14 @@ class LinkedList {
     Node* head;
     int* arrS;
     size_t sum;
-    Node** arrP; 
+    Node** arrP;
     int capacityS, size, capacityP;
 
-  private: 
+  private:
     void
-    incrementData(size_t len, Node* node){ 
+    incrementData(size_t len, Node* node){
       sum += len;
-      arrS[size] = len;
+      arrS[size] = sum;
       arrP[size] = node;
       ++size;
     }
@@ -83,14 +83,14 @@ class LinkedList {
       newNode->next = nullptr;
       incrementData(len, newNode);
       printData();
-      
+
 
       if(pos == 0){
         newNode->next = head;
         head = newNode;
         return;
       }
-      
+
       Node* current = head;
       for(size_t i = 0; i < pos - 1; ++i){
         if(current == nullptr){
