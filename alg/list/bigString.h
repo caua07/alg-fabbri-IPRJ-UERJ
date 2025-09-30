@@ -29,6 +29,18 @@ class bigString : public LinkedList {
         }
       }
 
+      
+
       return -1;
+    }
+
+    size_t
+    binarySearch(const char* txt,auto arr, int left, int right)
+    {
+      if(left < right) {
+        int mid = left+(right-left)/2;
+
+        if(txt[mid] > 
+      }
     }
 };

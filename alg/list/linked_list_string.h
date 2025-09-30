@@ -12,25 +12,78 @@ struct Node {
 class LinkedList {
   protected:
     Node* head;
+    int* arrS;
+    size_t sum;
+    Node** arrP; 
+    int capacityS, size, capacityP;
+
+  private: 
+    void
+    incrementData(size_t len, Node* node){ 
+      sum += len;
+      arrS[size] = len;
+      arrP[size] = node;
+      ++size;
+    }
 
   public:
 
     LinkedList(){
       head = nullptr;
+      sum = 0;
+      capacityS = 124;
+      capacityP = 1024;
+      arrS = (int*)malloc(sizeof(int)*capacityS);
+      arrP =(Node**)malloc(sizeof(Node*)*capacityP);
+      size = 0;
+    }
+
+    ~LinkedList(){
+      Node* temp = head;
+      free(arrS);
+      free(arrP);
+    }
+
+    size_t
+    getSum()
+    {
+      return sum;
+    }
+
+    void
+    printData()
+    {
+      std::cout << '\n';
+      std::cout << '\n';
+      std::cout << "sizes\n";
+      for(int i = 0; i < size; ++i){
+        std::cout << arrS[i] << " ";
+      }
+      std::cout << '\n';
+      std::cout << "pointers\n";
+      for(int i = 0; i < size; ++i){
+        std::cout << arrP[i] << " ";
+      }
+      std::cout << '\n';
+      std::cout << '\n';
     }
 
     void
     insert(size_t pos, const char* text)
     {
       Node* newNode = (Node*)malloc(sizeof(Node));
+      size_t len = std::strlen(text);
       if(!newNode) return;
-      newNode->data = (char*)malloc(std::strlen(text) + 1);
+      newNode->data = (char*)malloc(len + 1);
       if(!newNode->data){
         free(newNode);
         return;
       }
       std::strcpy(newNode->data, text);
       newNode->next = nullptr;
+      incrementData(len, newNode);
+      printData();
+      
 
       if(pos == 0){
         newNode->next = head;
@@ -89,6 +142,7 @@ class LinkedList {
         std::cout << "position out of list index :(" << '\n';
         return;
       }
+      sum -= std::strlen(current->next->data);
 
       Node* to_delete = current->next;
       current->next = to_delete->next;

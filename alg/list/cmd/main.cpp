@@ -81,7 +81,7 @@ main()
 
   while(true){
     std::cout << "\nwhat to do in linkedlist? \n";
-    std::cout << "\n(i)nsert (r)emove (p)rint (g)et-char-by-index (q)uit\n- ";
+    std::cout << "\n(i)nsert (r)emove (p)rint print-(s)um (g)et-char-by-index (q)uit\n- ";
     std::cin >> choice;
 
     if( choice == 'q' || choice == 'Q'){
@@ -117,7 +117,10 @@ main()
         }
         free(txt_to_add);
       }
-    } else if (choice == 'g' || choice == 'G') {
+    } else if (choice == 's' || choice == 'S') { 
+      std::cout << l1.getSum() << '\n';
+
+    }else if (choice == 'g' || choice == 'G') {
       std::cout << "\nindex to get\n- ";
       std::cin >> pos_to_opp;
       std::cout << '\n' << l1[pos_to_opp] << '\n';
