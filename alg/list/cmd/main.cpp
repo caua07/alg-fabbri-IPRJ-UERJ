@@ -1,4 +1,5 @@
 #include "../bigString.h"
+#include "../linked_list_string.h"
 #include <iostream>
 #include <cstring>
 #include <cstdlib>
@@ -81,7 +82,7 @@ main()
 
   while(true){
     std::cout << "\nwhat to do in linkedlist? \n";
-    std::cout << "\n(i)nsert (r)emove (p)rint print-(s)um (g)et-char-by-index (q)uit\n- ";
+    std::cout << "\n(i)nsert (r)emove (p)rint print-(s)um (g)et-char-by-index (q)uit print-(d)ata\n- ";
     std::cin >> choice;
 
     if( choice == 'q' || choice == 'Q'){
@@ -89,6 +90,8 @@ main()
     } else if (choice == 'p' || choice == 'P'){
       l1.print();
       continue;
+    } else if (choice == 'd') {
+      l1.printData();
     } else if(choice == 'i' || choice == 'I'){
       txt_to_add = recieveAndTreatString("\ntype content to add to list node\n- ");
       if(txt_to_add) {
