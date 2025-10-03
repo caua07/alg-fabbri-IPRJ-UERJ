@@ -5,6 +5,6 @@ class bigString : public LinkedList {
   public:
 
     
-    char operator[] (size_t index);
+    char operator[] (int index);
 
 };

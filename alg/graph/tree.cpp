@@ -5,10 +5,10 @@
 #include <cstdio> // For snprintf
 
 unsigned int acc = 0;
-Node* root = nullptr;
+TreeNode* root = nullptr;
 
-Node* createNode(const char* text){
-  Node* newNode = (Node*)malloc(sizeof(Node));
+TreeNode* createNode(const char* text){
+  TreeNode* newNode = (TreeNode*)malloc(sizeof(TreeNode));
   newNode->left = nullptr;
   newNode->right = nullptr;
   newNode->data = (char*)malloc(std::strlen(text) + 1);
@@ -18,7 +18,7 @@ Node* createNode(const char* text){
   return newNode;
 }
 
-void printBT(const char* prefix, const Node* root, bool isLeft) {
+void printBT(const char* prefix, const TreeNode* root, bool isLeft) {
     if (root != nullptr) {
         std::cout << prefix << (isLeft ? "├──" : "└──") << root->data << '\n';
         char new_prefix[1024];
@@ -30,7 +30,7 @@ void printBT(const char* prefix, const Node* root, bool isLeft) {
     }
 }
 
-bool findNode(Node* root, const char* text){
+bool findNode(TreeNode* root, const char* text){
   if(root == nullptr){
     return false;
   }
@@ -45,7 +45,7 @@ bool findNode(Node* root, const char* text){
   }
 }
 
-bool insertNode(Node*& root, const char* text){
+bool insertNode(TreeNode*& root, const char* text){
 
   if(root == nullptr){
     root = createNode(text);
@@ -64,14 +64,14 @@ bool insertNode(Node*& root, const char* text){
   }
 }
 
-unsigned int sumRec(Node* root) {
+unsigned int sumRec(TreeNode* root) {
   if (root == nullptr) {
     return 0;
   }
   return std::strlen(root->data) + sumRec(root->left) + sumRec(root->right);
 }
 
-void destroyTree(Node* root) {
+void destroyTree(TreeNode* root) {
   if (root != nullptr) {
     destroyTree(root->left);
     destroyTree(root->right);

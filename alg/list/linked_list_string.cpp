@@ -1,20 +1,46 @@
 #include "bigString.h"
 #include <algorithm>
 
+int 
+binarySearch(const std::vector<std::pair<int, Node*>>& vector, int target)
+{
+  int low = 0;
+  int high = vector.size() - 1;
+
+  while(low<=high){
+    int mid = low + (high-low)/2;
+
+    if (mid == vector.size() - 1) {
+      return (target >= vector[mid].first) ? mid : -1;
+    }
+
+    if (vector[mid].first == target || (target > vector[mid].first && target < vector[mid+1].first)){
+      return mid;
+    } else if (vector[mid].first < target){
+      low = mid+1;
+    } else {
+      high = mid-1;
+    }
+  } 
+
+  return -1;
+}
+
+
 char
-bigString::operator[](size_t index)
+bigString::operator[](int index)
 {
   if (index >= sum)
     return '\0';
 
-  auto it = std::upper_bound(indexes.begin(), indexes.end(), index,
-    [](size_t val, const std::pair<size_t, Node*>& pair) {
-      return val < pair.first;
-  });
+  int res = binarySearch(indexes, index);
+  if(res == -1){
+    std::cout << "access out of array index\n";  
+  }
+  std::cout << "indexes target: {" << indexes[res].first << ", " << indexes[res].second << "} \n"; 
 
-  auto target_it = std::prev(it);
-  size_t local_index = index - target_it->first;
-  return target_it->second->data[local_index];
+  int offset = index - indexes[res].first;
+  return indexes[res].second->data[offset];
 }
 
 void
@@ -22,8 +48,10 @@ LinkedList::index()
 {
   indexes.clear();
   Node* cur = head;
-  while(cur != nullptr){
-    indexes.emplace_back(std::make_pair(sum, cur));
+  int running_sum = 0;
+  while(cur){
+    indexes.emplace_back(std::make_pair(running_sum, cur));
+    running_sum += std::strlen(cur->data);
     cur = cur->next;
   }
 }
@@ -31,7 +59,7 @@ LinkedList::index()
 void
 LinkedList::printData()
 {
-  for(size_t i = 0; i<indexes.size(); ++i){
+  for(int i = 0; i<indexes.size(); ++i){
     std::cout << "{" << indexes[i].first << ", " << indexes[i].second << "} "; 
   }
 }
@@ -58,14 +86,14 @@ LinkedList::create(const char* txt)
   return newNode;
 }
 
-size_t
+int
 LinkedList::getSum()
 {
   return sum;
 }
 
 void 
-LinkedList::insert(size_t pos, const char* txt)
+LinkedList::insert(int pos, const char* txt)
 {
   if (pos > size){
     std::cout << "list out of index :(\\n";
@@ -73,14 +101,14 @@ LinkedList::insert(size_t pos, const char* txt)
   }
 
   Node* newNode = create(txt);
-  size_t len = std::strlen(txt);
+  int len = std::strlen(txt);
 
   if(pos == 0){
     newNode->next = head;
     head = newNode;
   } else {
     Node* cur = head;
-    for(size_t i = 1; i < pos; ++i){
+    for(int i = 1; i < pos; ++i){
       cur = cur->next;
     }
     newNode->next = cur->next;
@@ -90,11 +118,11 @@ LinkedList::insert(size_t pos, const char* txt)
   size++;
   sum += len;
   index();
-  printData();
 }
 
+
 void 
-LinkedList::remove(size_t pos)
+LinkedList::remove(int pos)
 {
   if (pos >= size) {
     std::cout << "list out of index :(\\n";
@@ -107,7 +135,7 @@ LinkedList::remove(size_t pos)
     head = head->next;
   } else {
     Node* cur = head;
-    for(size_t i = 1; i < pos; ++i){
+    for(int i = 1; i < pos; ++i){
       cur = cur->next;
     }
     to_delete = cur->next;

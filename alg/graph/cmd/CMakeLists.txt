@@ -1,3 +1,3 @@
-add_executable(main-exe main.cpp)
+add_executable(graph-exe graph-exe.cpp)
 
-target_link_libraries(main-exe bst_lib)
+target_link_libraries(graph-exe bst_lib)

@@ -12,9 +12,9 @@ struct Node {
 class LinkedList {
   protected:
     Node* head;
-    size_t size;
-    size_t sum;
-    std::vector<std::pair<size_t, Node*>> indexes;
+    int size;
+    int sum;
+    std::vector<std::pair<int, Node*>> indexes;
     void index();
 
   public:
@@ -29,12 +29,12 @@ class LinkedList {
     void printData();
 
     //display data
-    size_t getSum();
+    int getSum();
     void print();
 
     //insert
-    void insert(size_t pos, const char*);
+    void insert(int pos, const char*);
 
     //remove
-    void remove(size_t pos);
+    void remove(int pos);
 };

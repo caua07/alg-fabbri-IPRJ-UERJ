@@ -2,18 +2,18 @@
 
 extern unsigned int acc;
 
-struct Node {
+struct TreeNode {
   char* data;
-  Node* left;
-  Node* right;
+  TreeNode* left;
+  TreeNode* right;
 };
 
-extern Node* root;
+extern TreeNode* root;
 
-void print(Node* root);
-Node* createNode(const char* text);
-bool insertNode(Node*& root, const char* text);
-bool findNode(Node* root, const char* text);
-void printBT(const char* prefix, const Node* root, bool isLeft);
-unsigned int sumRec(Node* root, unsigned int acc);
-void destroyTree(Node* node);
+void print(TreeNode* root);
+TreeNode* createNode(const char* text);
+bool insertNode(TreeNode*& root, const char* text);
+bool findNode(TreeNode* root, const char* text);
+void printBT(const char* prefix, const TreeNode* root, bool isLeft);
+unsigned int sumRec(TreeNode* root);
+void destroyTree(TreeNode* node);
