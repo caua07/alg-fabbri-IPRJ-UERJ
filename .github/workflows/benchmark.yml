@@ -22,7 +22,7 @@ jobs:
         run: |
           mkdir build
           cd build
-          cmake .. -Dalg_BUILD_TESTS=OFF
+          cmake .. -Dalg_BUILD_TESTS=OFF -DBENCHMARK_ENABLE_TESTING=OFF
           make
 
       - name: Run benchmark
