@@ -1,0 +1,74 @@
+{
+  "nodes": [
+    {
+      "id": "Petropolis",
+      "label": "Petropolis"
+    },
+    {
+      "id": "Teresopolis",
+      "label": "Teresopolis"
+    },
+    {
+      "id": "Niteroi",
+      "label": "Niteroi"
+    },
+    {
+      "id": "Rio",
+      "label": "Rio"
+    },
+    {
+      "id": "Friburgo",
+      "label": "Friburgo"
+    }
+  ],
+  "edges": [
+    {
+      "from": "Petropolis",
+      "to": "Rio",
+      "weight": 65,
+      "label": "65"
+    },
+    {
+      "from": "Petropolis",
+      "to": "Teresopolis",
+      "weight": 50,
+      "label": "50"
+    },
+    {
+      "from": "Niteroi",
+      "to": "Rio",
+      "weight": 15,
+      "label": "15"
+    },
+    {
+      "from": "Rio",
+      "to": "Teresopolis",
+      "weight": 100,
+      "label": "100"
+    },
+    {
+      "from": "Friburgo",
+      "to": "Rio",
+      "weight": 140,
+      "label": "140"
+    },
+    {
+      "from": "Friburgo",
+      "to": "Niteroi",
+      "weight": 120,
+      "label": "120"
+    },
+    {
+      "from": "Friburgo",
+      "to": "Teresopolis",
+      "weight": 75,
+      "label": "75"
+    }
+  ],
+  "metadata": {
+    "nodeCount": 5,
+    "edgeCount": 7,
+    "generated": "dynagraph.c",
+    "timestamp": 1761432297
+  }
+}
