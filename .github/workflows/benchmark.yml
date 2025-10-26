@@ -22,7 +22,7 @@ jobs:
         run: |
           mkdir build
           cd build
-          cmake .. -DBUILD_THIRD_PARTY_TESTS=OFF
+          cmake .. -Dalg_BUILD_TESTS=OFF
           make
 
       - name: Run benchmark
