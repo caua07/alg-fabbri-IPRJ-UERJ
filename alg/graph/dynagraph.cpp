@@ -12,7 +12,7 @@ class no;
 struct lista;
 
 struct lista {
-  no* no;
+  no* node;
   int peso;
   lista* next;
 };
@@ -55,22 +55,22 @@ class no {
         std::cout << "no conections here.\n";
       }
       while ( current != nullptr ) {
-        std::cout << current->no->name;
+        std::cout << current->node->name;
         current = current->next;
       } 
     }
 
     void
-    connect(no* no, int peso) {
+    connect(no* target, int peso) {
       if (connectionHead == nullptr){
         lista* newNode = (lista*)malloc(sizeof(lista));
-        newNode->no = no;
+        newNode->node = target;
         newNode->peso = peso;
         newNode->next = nullptr;
         connectionHead = newNode;
       } else {
         lista* newNode = (lista*)malloc(sizeof(lista));
-        newNode->no = no;
+        newNode->node = target;
         newNode->peso = peso;
         newNode->next = connectionHead;
         connectionHead = newNode;
@@ -79,13 +79,13 @@ class no {
     }
 
     void
-    connect_two_way(no* no, int peso) {
-      this->connect(no, peso);
-      no->connect(this, peso);
+    connect_two_way(no* target, int peso) {
+      this->connect(target, peso);
+      target->connect(this, peso);
     }
 
     void
-    remove(no* no){
+    remove(no* target){
       if (connectionHead == nullptr) {
         std::cout << "List is empty\n";
         return;
@@ -93,7 +93,7 @@ class no {
 
       lista* current = connectionHead;
 
-      if (current->no == no) {
+      if (current->node == target) {
         connectionHead = connectionHead->next;
         free(current);
         --size;
@@ -102,7 +102,7 @@ class no {
 
       while (current != nullptr) {
 
-        if ((current->next != nullptr) && (current->next->no == no)) {
+        if ((current->next != nullptr) && (current->next->node == target)) {
           --size;
           if (current->next->next != nullptr) {
             lista* to_delete = current->next;  
@@ -116,6 +116,7 @@ class no {
           }
 
         }
+        current = current->next;
       }
       std::cout << "no nao foi achado na lista de conections.\n";
       return;
@@ -176,7 +177,7 @@ class graph {
       for (uint64_t i = 0; i < size; ++i) {
         lista* current = nodes[i]->get_connection_head();
         while (current != nullptr) {
-          int column = find_node_index(current->no);
+          int column = find_node_index(current->node);
           if (column >= 0) {
             matrix[i][static_cast<size_t>(column)] = current->peso;
           }

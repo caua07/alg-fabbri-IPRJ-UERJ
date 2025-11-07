@@ -3,6 +3,7 @@ priv/
 *.bak
 a
 a-bin
+build/
 CMakeCache.txt
 CMakeFiles/
 CTestTestfile.cmake
@@ -13,4 +14,3 @@ cmake_install.cmake
 run-tests
 run-tests*include.cmake
 run-tests*tests.cmake
-build/
