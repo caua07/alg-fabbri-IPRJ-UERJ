@@ -2,6 +2,7 @@
 #include <cstring>
 #include <queue>
 #include <set>
+#include <unordered_map>
 
 GraphNode*
 DFS(GraphNode* begin, const char* target)
