@@ -5,6 +5,8 @@
 #include <stdexcept>
 #include <memory>
 
+int run_homework_cli();
+
 class SinglyLinked {
   private:
     struct Node {

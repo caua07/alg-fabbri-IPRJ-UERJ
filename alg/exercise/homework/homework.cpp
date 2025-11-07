@@ -3,7 +3,7 @@
 #include <cstring>
 #include <limits>
 
-char* readAndAllocateOptimalString(const char* prompt) {
+static char* readAndAllocateOptimalString(const char* prompt) {
     std::cout << prompt;
     const int TEMP_BUFFER_SIZE = 1024;
     char temp_buffer[TEMP_BUFFER_SIZE];
@@ -20,7 +20,7 @@ char* readAndAllocateOptimalString(const char* prompt) {
     return optimal_buffer;
 }
 
-int main() {
+int run_homework_cli() {
     SinglyLinked l1;
     DoublyLinked l2;
     CircularBuffer<char*> lc(5);

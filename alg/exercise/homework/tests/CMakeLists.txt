@@ -1,10 +1,9 @@
 cmake_minimum_required(VERSION 3.16)
 
-# Find dependencies
-find_package(Threads REQUIRED)
+find_package(GTest REQUIRED)
+include(GoogleTest)
 
-# Gather test sources (adjust pattern to your layout if needed)
-file(GLOB_RECURSE HOMEWORK_TEST_SOURCES CONFIGURE_DEPENDS
+file(GLOB HOMEWORK_TEST_SOURCES CONFIGURE_DEPENDS
   ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/*.cc
   ${CMAKE_CURRENT_SOURCE_DIR}/*.cxx
@@ -12,14 +11,11 @@ file(GLOB_RECURSE HOMEWORK_TEST_SOURCES CONFIGURE_DEPENDS
 
 add_executable(run-tests-homework ${HOMEWORK_TEST_SOURCES})
 
-# Link against the imported targets found above.
-# Use benchmark::benchmark and GTest::gtest_main which are standard imported targets.
 target_link_libraries(run-tests-homework
   PRIVATE
+    homework
     GTest::gtest_main
-    benchmark::benchmark
-    Threads::Threads
+    GTest::gtest
 )
 
-enable_testing()
-add_test(NAME run-tests-homework COMMAND run-tests-homework)
+gtest_discover_tests(run-tests-homework)

@@ -3,6 +3,8 @@
 #include <cstdlib>
 #include <cstdint>
 #include <new>
+#include <vector>
+#include <iomanip>
 
 #define GRAPH_BUFFER 100
 
@@ -22,7 +24,8 @@ class no {
     uint64_t size;
   
   public:
-    no(const char* nameArg = nullptr) : connectionHead(nullptr) {
+    no(const char* nameArg = nullptr)
+      : name(nullptr), connectionHead(nullptr), size(0) {
       if (nameArg != nullptr) {
         name = (char*)malloc(sizeof(char) * (std::strlen(nameArg) + 1));
         if (!name) {
@@ -30,8 +33,6 @@ class no {
           throw std::bad_alloc();
         }
         std::strcpy(name, nameArg);
-      } else {
-        name = nullptr;
       }
     }
 
@@ -43,6 +44,8 @@ class no {
         current = next;
       }
       connectionHead = nullptr;
+      free(name);
+      name = nullptr;
     }
 
     void
@@ -117,6 +120,16 @@ class no {
       std::cout << "no nao foi achado na lista de conections.\n";
       return;
     }
+
+    lista*
+    get_connection_head() const {
+      return connectionHead;
+    }
+
+    const char*
+    get_name() const {
+      return name ? name : "";
+    }
 };
 
 class graph {
@@ -131,6 +144,11 @@ class graph {
     } 
 
     ~graph() {
+      for (uint64_t i = 0; i < size; ++i) {
+        delete nodes[i];
+      }
+      free(nodes);
+      nodes = nullptr;
     }
 
     no*
@@ -139,6 +157,60 @@ class graph {
       nodes[size] = newNode;
       ++size;
       return newNode;
+    }
+
+    int
+    find_node_index(const no* target) const {
+      for (uint64_t i = 0; i < size; ++i) {
+        if (nodes[i] == target) {
+          return static_cast<int>(i);
+        }
+      }
+      return -1;
+    }
+
+    std::vector<std::vector<int>>
+    build_adjacency_matrix() const {
+      std::vector<std::vector<int>> matrix(size, std::vector<int>(size, 0));
+
+      for (uint64_t i = 0; i < size; ++i) {
+        lista* current = nodes[i]->get_connection_head();
+        while (current != nullptr) {
+          int column = find_node_index(current->no);
+          if (column >= 0) {
+            matrix[i][static_cast<size_t>(column)] = current->peso;
+          }
+          current = current->next;
+        }
+      }
+
+      return matrix;
+    }
+
+    void
+    print_adjacency_matrix() const {
+      auto matrix = build_adjacency_matrix();
+
+      if (size == 0) {
+        std::cout << "Graph is empty.\n";
+        return;
+      }
+
+      std::cout << "Adjacency matrix:\n";
+
+      std::cout << std::setw(8) << "";
+      for (uint64_t j = 0; j < size; ++j) {
+        std::cout << std::setw(8) << nodes[j]->get_name();
+      }
+      std::cout << '\n';
+
+      for (uint64_t i = 0; i < size; ++i) {
+        std::cout << std::setw(8) << nodes[i]->get_name();
+        for (uint64_t j = 0; j < size; ++j) {
+          std::cout << std::setw(8) << matrix[i][static_cast<size_t>(j)];
+        }
+        std::cout << '\n';
+      }
     }
 };
 
@@ -153,7 +225,8 @@ main()
 
   node1->connect_two_way(node2, 50);
 
-  
+  graph.print_adjacency_matrix();
+
   node1->print_connections();
   node2->print_connections();
   return 1;
